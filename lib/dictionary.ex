@@ -1,9 +1,25 @@
 defmodule Dictionary do
-  @popular_words "priv/popular.txt"
-    |> File.read!()
-    |> String.split("\n", trim: true)
+  @moduledoc """
+  Get a dictionary
+  """
+  alias Dictionary.Impl.WordList
 
-  def random_popular_word do
-    Enum.random(@popular_words)
-  end
+  @opaque t :: WordList.t()
+  @opaque word :: WordList.word()
+
+  @doc """
+  Start a list of words, if you provide a file with the new dictionary
+  It will load to the memory instead, by default it uses a popular dictionary.
+  """
+  @spec start() :: t
+  defdelegate start(), to: WordList, as: :word_list
+
+  @spec start(WordList.file()) :: t
+  defdelegate start(file), to: WordList, as: :word_list
+
+  @doc """
+  Get a random word using the words provided.
+  """
+  @spec random_word(t) :: word
+  defdelegate random_word(words), to: WordList
 end
