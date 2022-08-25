@@ -5,6 +5,7 @@ defmodule Dictionary.Impl.WordList do
   @type t :: list(String.t())
   @type word :: String.t()
   @type file :: file :: String.t()
+  @type slug :: String.t()
 
   @doc """
   Returns a list of words, if you provide a file with the new dictionary
@@ -23,4 +24,18 @@ defmodule Dictionary.Impl.WordList do
   """
   @spec random_word(t) :: word
   def random_word(words), do: Enum.random(words)
+
+  @doc """
+  Get a random slug using the words provided.
+  """
+  @spec random_slug(t, number_of_words :: integer | struct) :: slug
+  def random_slug(words, size) when is_integer(size) and size > 0 do
+    random_slug(words, 1..size)
+  end
+
+  def random_slug(words,  %Range{} = range) do
+    range
+    |> Enum.map(fn _ -> random_word(words) end)
+    |> Enum.join("-")
+  end
 end

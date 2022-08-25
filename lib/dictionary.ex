@@ -6,6 +6,7 @@ defmodule Dictionary do
 
   @opaque t :: WordList.t()
   @opaque word :: WordList.word()
+  @opaque slug :: WordList.slug()
 
   @doc """
   Start a list of words, if you provide a file with the new dictionary
@@ -22,4 +23,10 @@ defmodule Dictionary do
   """
   @spec random_word(t) :: word
   defdelegate random_word(words), to: WordList
+
+  @doc """
+  Get a random slug using the words provided.
+  """
+  @spec random_slug(t, size_or_range :: integer | struct) :: slug
+  defdelegate random_slug(words, range), to: WordList
 end
