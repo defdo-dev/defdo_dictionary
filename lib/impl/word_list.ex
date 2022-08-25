@@ -13,7 +13,7 @@ defmodule Dictionary.Impl.WordList do
   """
   @spec word_list(file) :: t
   @spec word_list() :: t
-  def word_list(file \\ "priv/popular.txt") do
+  def word_list(file \\ popular_path()) do
     file
     |> File.read!()
     |> String.split("\n", trim: true)
@@ -37,5 +37,9 @@ defmodule Dictionary.Impl.WordList do
     range
     |> Enum.map(fn _ -> random_word(words) end)
     |> Enum.join("-")
+  end
+
+  defp popular_path do
+    Application.app_dir(:dictionary, "/priv/popular.txt")
   end
 end
