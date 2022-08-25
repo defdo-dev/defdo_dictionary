@@ -7,6 +7,7 @@ defmodule Dictionary do
   @opaque t :: WordList.t()
   @opaque word :: WordList.word()
   @opaque slug :: WordList.slug()
+  @opaque path :: String.t()
 
   @doc """
   Start a list of words, if you provide a file with the new dictionary
@@ -29,4 +30,10 @@ defmodule Dictionary do
   """
   @spec random_slug(t, size_or_range :: integer | struct) :: slug
   defdelegate random_slug(words, range), to: WordList
+
+  @doc """
+  Give the application dictionary path to get the popular.txt file.
+  """
+  @spec popular_dictionary_path() :: path
+  defdelegate popular_dictionary_path, to: WordList
 end
