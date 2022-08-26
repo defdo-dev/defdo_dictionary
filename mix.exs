@@ -22,7 +22,7 @@ defmodule Dictionary.MixProject do
 
   defp package do
     [
-      files: ~w(lib CHANGELOG.md LICENSE.md mix.exs README.md VERSION .formatter.exs),
+      files: ~w(lib priv CHANGELOG.md LICENSE.md mix.exs README.md VERSION .formatter.exs),
       description: "It provides an API to work with words.",
       licenses: ["Apache-2.0"],
       links: %{
