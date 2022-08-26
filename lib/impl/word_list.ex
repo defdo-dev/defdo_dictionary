@@ -33,13 +33,13 @@ defmodule Dictionary.Impl.WordList do
     random_slug(words, 1..size)
   end
 
-  def random_slug(words,  %Range{} = range) do
+  def random_slug(words, %Range{} = range) do
     range
     |> Enum.map(fn _ -> random_word(words) end)
     |> Enum.join("-")
   end
 
   def popular_dictionary_path do
-    Application.app_dir(:dictionary, "/priv/popular.txt")
+    Application.app_dir(:defdo_dictionary, "/priv/popular.txt")
   end
 end

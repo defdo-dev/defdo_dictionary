@@ -1,6 +1,10 @@
 defmodule Dictionary do
   @moduledoc """
-  Get a dictionary
+  The Dictionary module provides a way to interact with words files.
+
+  Currently we use a popular.txt file as default, but you can bring your own file.
+
+  At this stage you can use it to create your slugs based on the provided words.
   """
   alias Dictionary.Impl.WordList
 

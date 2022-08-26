@@ -10,7 +10,7 @@ by adding `dictionary` to your list of dependencies in `mix.exs`:
 ```elixir
 def deps do
   [
-    {:dictionary, "~> 0.1.0"}
+    {:defdo_dictionary, "~> 0.1.0"}
   ]
 end
 ```
